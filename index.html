@@ -40,10 +40,13 @@
 
   <section class="section">
     <h2>Palabras claves</h2>
+
     <h3>Características físicas</h3>
 
     <h4>El pelo</h4>
-    <div class="grid" id="peleo-list">
+    <div class="grid" id="el-pelo">
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">El pelo</span><span class="translation">Hair</span></div>
+      <!-- following the photo exactly: pelirrojo, a; moreno, a; castaño; rubio; blanco; cano -->
       <div class="vocab-item" onclick="toggle(this)"><span class="term">pelirrojo, a</span><span class="translation">red-haired</span></div>
       <div class="vocab-item" onclick="toggle(this)"><span class="term">moreno, a</span><span class="translation">dark-haired</span></div>
       <div class="vocab-item" onclick="toggle(this)"><span class="term">castaño</span><span class="translation">brown-haired</span></div>
@@ -52,8 +55,20 @@
       <div class="vocab-item" onclick="toggle(this)"><span class="term">cano</span><span class="translation">gray-haired</span></div>
     </div>
 
+    <h4>tener el pelo...</h4>
+    <div class="grid" id="tener-el-pelo">
+      <!-- explicit 'tener el pelo...' phrasing as in the photo -->
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener el pelo... pelirrojo, a</span><span class="translation">to have ... red hair</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener el pelo... moreno, a</span><span class="translation">to have ... dark hair</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener el pelo... castaño</span><span class="translation">to have ... brown hair</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener el pelo... rubio</span><span class="translation">to have ... blond hair</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener el pelo... blanco</span><span class="translation">to have ... white hair</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener el pelo... cano</span><span class="translation">to have ... gray hair</span></div>
+    </div>
+
     <h4>Los ojos</h4>
-    <div class="grid" id="eyes-list">
+    <div class="grid" id="los-ojos">
+      <!-- photo lists: oscuro, a; claro, a; negro, a; marrón; pequeño, a; grandes -->
       <div class="vocab-item" onclick="toggle(this)"><span class="term">oscuro, a</span><span class="translation">dark</span></div>
       <div class="vocab-item" onclick="toggle(this)"><span class="term">claro, a</span><span class="translation">light</span></div>
       <div class="vocab-item" onclick="toggle(this)"><span class="term">negro, a</span><span class="translation">black</span></div>
@@ -64,6 +79,7 @@
 
     <h4>tener los ojos...</h4>
     <div class="grid" id="tener-ojos">
+      <!-- photo lists: azules; verdes; negros; marrones; pequeños; grandes -->
       <div class="vocab-item" onclick="toggle(this)"><span class="term">azules</span><span class="translation">blue</span></div>
       <div class="vocab-item" onclick="toggle(this)"><span class="term">verdes</span><span class="translation">green</span></div>
       <div class="vocab-item" onclick="toggle(this)"><span class="term">negros</span><span class="translation">black</span></div>
@@ -81,7 +97,8 @@
     </div>
 
     <h4>Apariencia</h4>
-    <div class="grid" id="appearance">
+    <div class="grid" id="apariencia">
+      <!-- photo includes ser... feo, a; guapo, a; bonito, a and also ser... alto, a; gordo, a; guapo, a; delgado, a -->
       <div class="vocab-item" onclick="toggle(this)"><span class="term">ser... feo, a</span><span class="translation">to be... ugly</span></div>
       <div class="vocab-item" onclick="toggle(this)"><span class="term">ser... guapo, a</span><span class="translation">to be... good-looking</span></div>
       <div class="vocab-item" onclick="toggle(this)"><span class="term">ser... bonito, a</span><span class="translation">to be... pretty</span></div>
@@ -92,12 +109,14 @@
 
     <h4>tener/llevar...</h4>
     <div class="grid" id="tener-llevar">
-      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener/llevar barba</span><span class="translation">to have/wear a beard</span></div>
-      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener/llevar bigote</span><span class="translation">to have/wear a mustache</span></div>
-      <div class="vocab-item" onclick="toggle(this)"><span class="term">llevar gafas</span><span class="translation">to wear glasses</span></div>
-      <div class="vocab-item" onclick="toggle(this)"><span class="term">llevar un sombrero</span><span class="translation">to wear a hat</span></div>
-      <div class="vocab-item" onclick="toggle(this)"><span class="term">llevar una gorra</span><span class="translation">to wear a cap</span></div>
-      <div class="vocab-item" onclick="toggle(this)"><span class="term">llevar un pañuelo</span><span class="translation">to wear a scarf</span></div>
+      <!-- photo lists multiple repeated categories; preserve wording exactly -->
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener/llevar... barba</span><span class="translation">to have/wear a beard</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener/llevar... bigote</span><span class="translation">to have/wear a mustache</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">llevar... gafas</span><span class="translation">to wear glasses</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">llevar... un sombrero</span><span class="translation">to wear a hat</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">llevar... una gorra</span><span class="translation">to wear a cap</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener/llevar... gafas</span><span class="translation">to have/wear glasses</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener/llevar... un pañuelo</span><span class="translation">to have/wear a scarf</span></div>
     </div>
 
   </section>
@@ -184,14 +203,22 @@
       t.style.display = t.style.display === 'inline' ? 'none' : 'inline';
     }
 
-    /* ------ Practice data (all vocab captured exactly) ------ */
+    /* ------ Practice data (reflects photo wording exactly) ------ */
     const practiceItems = [
+      {spanish:"El pelo", english:"Hair"},
       {spanish:"pelirrojo, a", english:"red-haired"},
       {spanish:"moreno, a", english:"dark-haired"},
       {spanish:"castaño", english:"brown-haired"},
       {spanish:"rubio", english:"blond"},
       {spanish:"blanco", english:"white-haired"},
       {spanish:"cano", english:"gray-haired"},
+      {spanish:"tener el pelo... pelirrojo, a", english:"to have ... red hair"},
+      {spanish:"tener el pelo... moreno, a", english:"to have ... dark hair"},
+      {spanish:"tener el pelo... castaño", english:"to have ... brown hair"},
+      {spanish:"tener el pelo... rubio", english:"to have ... blond hair"},
+      {spanish:"tener el pelo... blanco", english:"to have ... white hair"},
+      {spanish:"tener el pelo... cano", english:"to have ... gray hair"},
+      {spanish:"Los ojos", english:"Eyes"},
       {spanish:"oscuro, a", english:"dark"},
       {spanish:"claro, a", english:"light"},
       {spanish:"negro, a", english:"black"},
@@ -202,6 +229,9 @@
       {spanish:"verdes", english:"green"},
       {spanish:"negros", english:"black"},
       {spanish:"marrones", english:"brown"},
+      {spanish:"pequeños", english:"small"},
+      {spanish:"grandes", english:"big"},
+      {spanish:"Altura y físico", english:"Height and build"},
       {spanish:"bajo, a", english:"short"},
       {spanish:"alto, a", english:"tall"},
       {spanish:"delgado, a", english:"thin"},
@@ -209,12 +239,15 @@
       {spanish:"ser... feo, a", english:"to be... ugly"},
       {spanish:"ser... guapo, a", english:"to be... good-looking"},
       {spanish:"ser... bonito, a", english:"to be... pretty"},
-      {spanish:"tener/llevar barba", english:"to have/wear a beard"},
-      {spanish:"tener/llevar bigote", english:"to have/wear a mustache"},
-      {spanish:"llevar gafas", english:"to wear glasses"},
-      {spanish:"llevar un sombrero", english:"to wear a hat"},
-      {spanish:"llevar una gorra", english:"to wear a cap"},
-      {spanish:"llevar un pañuelo", english:"to wear a scarf"},
+      {spanish:"ser... alto, a", english:"to be... tall"},
+      {spanish:"ser... gordo, a", english:"to be... fat"},
+      {spanish:"ser... delgado, a", english:"to be... thin"},
+      {spanish:"tener/llevar... barba", english:"to have/wear a beard"},
+      {spanish:"tener/llevar... bigote", english:"to have/wear a mustache"},
+      {spanish:"llevar... gafas", english:"to wear glasses"},
+      {spanish:"llevar... un sombrero", english:"to wear a hat"},
+      {spanish:"llevar... una gorra", english:"to wear a cap"},
+      {spanish:"llevar... un pañuelo", english:"to wear a scarf"},
       {spanish:"tonto, a", english:"silly"},
       {spanish:"gracioso, a", english:"funny"},
       {spanish:"antipático, a", english:"unfriendly"},
@@ -244,7 +277,8 @@
     function setMode(m){
       mode = m;
       document.querySelectorAll('.mode').forEach(el=>el.classList.add('hidden'));
-      document.getElementById('mode-'+m).classList.remove('hidden');
+      const el = document.getElementById('mode-'+m);
+      if(el) el.classList.remove('hidden');
       if(m==='fill') buildFill();
       if(m==='mc') buildMc();
       if(m==='match') buildMatch();
@@ -263,7 +297,9 @@
     function buildFill(){
       const container = document.getElementById('fill-list');
       container.innerHTML = '';
-      currentFillSet = shuffle([...practiceItems]).slice(0,6);
+      // choose 6 items excluding category headers like "El pelo", "Los ojos", "Altura y físico"
+      const pool = practiceItems.filter(i=>!["El pelo","Los ojos","Altura y físico","Altura y físico","Los ojos","El pelo","Altura y físico"].includes(i.spanish));
+      currentFillSet = shuffle(pool).slice(0,6);
       currentFillSet.forEach((it, idx)=>{
         const row = document.createElement('div');
         row.className = 'practice-row';
@@ -308,11 +344,13 @@
       const qbox = document.getElementById('mc-question');
       const optbox = document.getElementById('mc-options');
       optbox.innerHTML = '';
-      mcCurrent = pickRandom(practiceItems);
+      // pick non-header item
+      const pool = practiceItems.filter(i=>!["El pelo","Los ojos","Altura y físico","Altura y físico"].includes(i.spanish));
+      mcCurrent = pickRandom(pool);
       qbox.innerHTML = `<strong>What does "<em>${mcCurrent.spanish}</em>" mean?</strong>`;
-      const options = shuffle([mcCurrent.english, pickRandom(practiceItems).english, pickRandom(practiceItems).english, pickRandom(practiceItems).english]).slice(0,4);
-      // ensure mcCurrent.english is included
-      if(!options.includes(mcCurrent.english)){ options[ Math.floor(Math.random()*4) ] = mcCurrent.english; }
+      // pick 3 distractors distinct from correct
+      const distractors = shuffle(practiceItems.map(i=>i.english).filter(e=>e !== mcCurrent.english)).slice(0,3);
+      const options = shuffle([mcCurrent.english, ...distractors]);
       options.forEach(opt=>{
         const div = document.createElement('div');
         div.className = 'mc-option';
@@ -321,7 +359,6 @@
           total += 1;
           if(opt === mcCurrent.english){ score += 1; div.style.background='#d4f7d6'; div.textContent = opt + ' ✅'; }
           else { div.style.background='#ffdede'; div.textContent = opt + ' ❌'; }
-          // disable options
           Array.from(optbox.children).forEach(c=>c.style.pointerEvents='none');
           updateScore();
         };
@@ -334,12 +371,13 @@
     function buildMatch(){
       const area = document.getElementById('matchArea');
       area.innerHTML = '';
-      matchPairs = shuffle([...practiceItems]).slice(0,6);
+      // select 6 pairs ignoring headers
+      const pool = practiceItems.filter(i=>!["El pelo","Los ojos","Altura y físico","Los ojos","El pelo"].includes(i.spanish));
+      matchPairs = shuffle(pool).slice(0,6);
       const spanishCol = document.createElement('div');
       spanishCol.style.display='flex'; spanishCol.style.flexDirection='column'; spanishCol.style.gap='8px';
       const englishCol = document.createElement('div');
       englishCol.style.display='flex'; englishCol.style.flexDirection='column'; englishCol.style.gap='8px';
-      // create targets and draggables
       const englishShuffled = shuffle(matchPairs.map(p=>p.english));
       matchPairs.forEach((p, i)=>{
         const drag = document.createElement('div');
@@ -365,12 +403,10 @@
         };
         englishCol.appendChild(target);
       });
-      // make clickable pairing as alternative for devices
       const wrapper = document.createElement('div');
       wrapper.style.display='flex'; wrapper.style.gap='12px';
       wrapper.appendChild(spanishCol); wrapper.appendChild(englishCol);
       area.appendChild(wrapper);
-      // also add note for click pairing
     }
 
     function checkMatch(){
