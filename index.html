@@ -1,120 +1,404 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>¿Cómo eres tú? - Spanish Vocabulary Practice</title>
+  <meta charset="UTF-8" />
+  <title>Vocabulario III.A: ¿Cómo eres tú?</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fdf6f8;
-      color: #333;
-      padding: 20px;
+    :root{
+      --bg:#fdf6f8; --card:#f3d1f4; --card-hover:#e9b3e9; --accent:#c94f7c; --muted:#555;
     }
-    h2 {
-      color: #c94f7c;
-      margin-top: 40px;
-    }
-    .vocab-item {
-      margin: 8px 0;
-      cursor: pointer;
-      padding: 8px;
-      background-color: #f3d1f4;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-    .vocab-item:hover {
-      background-color: #e9b3e9;
-    }
-    .translation {
-      display: none;
-      margin-left: 15px;
-      font-style: italic;
-      color: #555;
-    }
-    .practice-section {
-      margin-top: 30px;
-    }
-    .practice-item {
-      margin-bottom: 15px;
-    }
-    input[type="text"] {
-      padding: 5px;
-      width: 200px;
-    }
-    .feedback {
-      margin-left: 10px;
-      font-weight: bold;
-    }
+    body{font-family:Segoe UI, Roboto, Arial, sans-serif;background:var(--bg);color:#222;padding:18px;line-height:1.45}
+    h1,h2,h3,h4{color:var(--accent);margin:10px 0}
+    .section{margin-bottom:18px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+    .vocab-item{background:var(--card);padding:8px;border-radius:6px;cursor:pointer;user-select:none}
+    .vocab-item:hover{background:var(--card-hover)}
+    .term{font-weight:600}
+    .translation{display:inline-block;margin-left:8px;font-style:italic;color:var(--muted);display:none}
+    .note{font-size:0.95rem;color:var(--muted);margin-top:6px}
+    .practice-section{margin-top:28px;border-top:1px dashed #e0b0cf;padding-top:18px}
+    .practice-row{margin-bottom:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    input[type="text"]{padding:6px;border-radius:4px;border:1px solid #ccc;width:220px}
+    button{background:var(--accent);color:#fff;border:none;padding:8px 10px;border-radius:6px;cursor:pointer}
+    button.secondary{background:#888}
+    .feedback{font-weight:700;margin-left:8px}
+    .score{font-size:1rem;font-weight:700;color:var(--accent)}
+    .mc-options{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+    .mc-option{background:#fff;border:1px solid #ddd;padding:8px;border-radius:6px;cursor:pointer}
+    .mc-option:hover{background:#f7f7f7}
+    .match-container{display:flex;flex-wrap:wrap;gap:10px}
+    .match-target, .match-draggable{padding:8px;border-radius:6px;background:#fff;border:1px dashed #d6a1c6;min-width:140px;text-align:center}
+    .hidden{display:none}
+    .controls{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
+    footer{margin-top:24px;font-size:0.9rem;color:var(--muted)}
   </style>
 </head>
 <body>
 
-  <h1>📘 ¿Cómo eres tú? - Spanish Vocabulary Practice</h1>
+  <h1>Vocabulario III.A: ¿Cómo eres tú?</h1>
 
-  <h2>🔍 Haz clic para revelar el significado</h2>
+  <section class="section">
+    <h2>Palabras claves</h2>
+    <h3>Características físicas</h3>
 
-  <!-- Physical Characteristics -->
-  <h3>Características físicas</h3>
-  <div class="vocab-item" onclick="toggleTranslation(this)">pelirrojo, a <span class="translation">red-haired</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">moreno, a <span class="translation">dark-haired</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">rubio, a <span class="translation">blond</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">castaño <span class="translation">brown-haired</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">blanco <span class="translation">white-haired</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">cano <span class="translation">gray-haired</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">bajo, a <span class="translation">short</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">alto, a <span class="translation">tall</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">delgado, a <span class="translation">thin</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">gordo, a <span class="translation">fat</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">feo, a <span class="translation">ugly</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">guapo, a <span class="translation">good-looking</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">bonito, a <span class="translation">pretty</span></div>
+    <h4>El pelo</h4>
+    <div class="grid" id="peleo-list">
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">pelirrojo, a</span><span class="translation">red-haired</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">moreno, a</span><span class="translation">dark-haired</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">castaño</span><span class="translation">brown-haired</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">rubio</span><span class="translation">blond</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">blanco</span><span class="translation">white-haired</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">cano</span><span class="translation">gray-haired</span></div>
+    </div>
 
-  <!-- Eyes -->
-  <h3>Los ojos</h3>
-  <div class="vocab-item" onclick="toggleTranslation(this)">oscuro, a <span class="translation">dark</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">claro, a <span class="translation">light</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">negro, a <span class="translation">black</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">marrón <span class="translation">brown</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">azules <span class="translation">blue</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">verdes <span class="translation">green</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">pequeño, a <span class="translation">small</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">grandes <span class="translation">big</span></div>
+    <h4>Los ojos</h4>
+    <div class="grid" id="eyes-list">
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">oscuro, a</span><span class="translation">dark</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">claro, a</span><span class="translation">light</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">negro, a</span><span class="translation">black</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">marrón</span><span class="translation">brown</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">pequeño, a</span><span class="translation">small</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">grandes</span><span class="translation">big</span></div>
+    </div>
 
-  <!-- Accessories -->
-  <h3>Accesorios y rasgos</h3>
-  <div class="vocab-item" onclick="toggleTranslation(this)">tener/llevar barba <span class="translation">to have/wear a beard</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">tener/llevar bigote <span class="translation">to have/wear a mustache</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">llevar gafas <span class="translation">to wear glasses</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">llevar un sombrero <span class="translation">to wear a hat</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">llevar una gorra <span class="translation">to wear a cap</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">llevar un pañuelo <span class="translation">to wear a scarf</span></div>
+    <h4>tener los ojos...</h4>
+    <div class="grid" id="tener-ojos">
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">azules</span><span class="translation">blue</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">verdes</span><span class="translation">green</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">negros</span><span class="translation">black</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">marrones</span><span class="translation">brown</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">pequeños</span><span class="translation">small</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">grandes</span><span class="translation">big</span></div>
+    </div>
 
-  <!-- Personality -->
-  <h2>🧠 Carácter y personalidad</h2>
-  <div class="vocab-item" onclick="toggleTranslation(this)">tonto, a <span class="translation">silly</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">gracioso, a <span class="translation">funny</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">antipático, a <span class="translation">unfriendly</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">perezoso, a <span class="translation">lazy</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">desagradable <span class="translation">unpleasant</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">estudioso, a <span class="translation">studious</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">inteligente <span class="translation">intelligent</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">intelectual <span class="translation">intellectual</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">simpático, a <span class="translation">nice</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">trabajador, a <span class="translation">hard-working</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">agradable <span class="translation">pleasant</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">amable <span class="translation">kind</span></div>
+    <h4>Altura y físico</h4>
+    <div class="grid" id="altura-fisico">
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">bajo, a</span><span class="translation">short</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">alto, a</span><span class="translation">tall</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">delgado, a</span><span class="translation">thin</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">gordo, a</span><span class="translation">fat</span></div>
+    </div>
 
-  <!-- Nationalities -->
-  <h2>🌎 Nacionalidades</h2>
-  <div class="vocab-item" onclick="toggleTranslation(this)">puertorriqueño, a <span class="translation">Puerto Rican</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">colombiano, a <span class="translation">Colombian</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">italiano, a <span class="translation">Italian</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">chino, china <span class="translation">Chinese</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">mexicano, a <span class="translation">Mexican</span></div>
-  <div class="vocab-item" onclick="toggleTranslation(this)">argentino, a <span class="translation">Argentinian</span></div>
+    <h4>Apariencia</h4>
+    <div class="grid" id="appearance">
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">ser... feo, a</span><span class="translation">to be... ugly</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">ser... guapo, a</span><span class="translation">to be... good-looking</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">ser... bonito, a</span><span class="translation">to be... pretty</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">ser... alto, a</span><span class="translation">to be... tall</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">ser... gordo, a</span><span class="translation">to be... fat</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">ser... delgado, a</span><span class="translation">to be... thin</span></div>
+    </div>
 
-  <h2>✍️ Práctica: Escribe el significado en inglés</h2>
-  <div class="practice-section">
-    <div class="practice-item">
-      <label>¿Qué significa "simpático"? </label>
-      <input type="text" oninput="check
+    <h4>tener/llevar...</h4>
+    <div class="grid" id="tener-llevar">
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener/llevar barba</span><span class="translation">to have/wear a beard</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tener/llevar bigote</span><span class="translation">to have/wear a mustache</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">llevar gafas</span><span class="translation">to wear glasses</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">llevar un sombrero</span><span class="translation">to wear a hat</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">llevar una gorra</span><span class="translation">to wear a cap</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">llevar un pañuelo</span><span class="translation">to wear a scarf</span></div>
+    </div>
+
+  </section>
+
+  <section class="section">
+    <h2>Carácter y personalidad</h2>
+    <h3>¿Cómo eres?</h3>
+    <h3>¿Cómo es?</h3>
+    <h3>¿Cómo es tu compañero?</h3>
+    <h4>Soy... / Es...</h4>
+
+    <div class="grid" id="personality">
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">tonto, a</span><span class="translation">silly</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">gracioso, a</span><span class="translation">funny</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">antipático, a</span><span class="translation">unfriendly</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">perezoso, a</span><span class="translation">lazy</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">desagradable</span><span class="translation">unpleasant</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">estudioso, a</span><span class="translation">studious</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">inteligente, intelectual</span><span class="translation">intelligent, intellectual</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">simpático, a</span><span class="translation">nice</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">trabajador, a</span><span class="translation">hard-working</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">agradable, amable</span><span class="translation">pleasant, kind</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">guapo, a</span><span class="translation">good-looking</span></div>
+    </div>
+
+    <h4>Nacionalidades</h4>
+    <div class="grid" id="nationalities">
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">puertorriqueño, a</span><span class="translation">Puerto Rican</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">colombiano, a</span><span class="translation">Colombian</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">italiano, a</span><span class="translation">Italian</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">chino, china</span><span class="translation">Chinese</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">mexicano, a</span><span class="translation">Mexican</span></div>
+      <div class="vocab-item" onclick="toggle(this)"><span class="term">argentino, a</span><span class="translation">Argentinian</span></div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE PRACTICE -->
+  <section class="practice-section" id="practice">
+    <h2>✍️ Práctica interactiva</h2>
+    <p class="note">Three practice modes: Fill-in (type), Multiple choice, Matching. Use the mode selector below.</p>
+
+    <div class="controls">
+      <button onclick="setMode('fill')">Fill-in (Type)</button>
+      <button onclick="setMode('mc')">Multiple Choice</button>
+      <button onclick="setMode('match')">Match</button>
+      <button class="secondary" onclick="resetPractice()">Reset</button>
+      <div style="margin-left:auto" class="score" id="scoreDisplay">Score: 0 / 0</div>
+    </div>
+
+    <!-- Fill-in -->
+    <div id="mode-fill" class="mode hidden">
+      <div id="fill-list"></div>
+      <div style="margin-top:10px">
+        <button onclick="checkAllFill()">Check All</button>
+        <button class="secondary" onclick="nextFillSet()">Next Set</button>
+      </div>
+    </div>
+
+    <!-- Multiple Choice -->
+    <div id="mode-mc" class="mode hidden">
+      <div id="mc-question" style="margin-top:12px"></div>
+      <div class="mc-options" id="mc-options"></div>
+      <div style="margin-top:12px">
+        <button onclick="nextMcQuestion()">Next Question</button>
+      </div>
+    </div>
+
+    <!-- Matching -->
+    <div id="mode-match" class="mode hidden">
+      <p class="note">Drag the Spanish term onto its English meaning (or click pair) — click Check when done.</p>
+      <div class="match-container" id="matchArea"></div>
+      <div style="margin-top:10px">
+        <button onclick="checkMatch()">Check Matches</button>
+      </div>
+    </div>
+
+    <footer>Tip: Click any vocabulary card above to reveal its English meaning while you practice.</footer>
+  </section>
+
+  <script>
+    /* Basic toggle for translations */
+    function toggle(el){
+      const t = el.querySelector('.translation');
+      t.style.display = t.style.display === 'inline' ? 'none' : 'inline';
+    }
+
+    /* ------ Practice data (all vocab captured exactly) ------ */
+    const practiceItems = [
+      {spanish:"pelirrojo, a", english:"red-haired"},
+      {spanish:"moreno, a", english:"dark-haired"},
+      {spanish:"castaño", english:"brown-haired"},
+      {spanish:"rubio", english:"blond"},
+      {spanish:"blanco", english:"white-haired"},
+      {spanish:"cano", english:"gray-haired"},
+      {spanish:"oscuro, a", english:"dark"},
+      {spanish:"claro, a", english:"light"},
+      {spanish:"negro, a", english:"black"},
+      {spanish:"marrón", english:"brown"},
+      {spanish:"pequeño, a", english:"small"},
+      {spanish:"grandes", english:"big"},
+      {spanish:"azules", english:"blue"},
+      {spanish:"verdes", english:"green"},
+      {spanish:"negros", english:"black"},
+      {spanish:"marrones", english:"brown"},
+      {spanish:"bajo, a", english:"short"},
+      {spanish:"alto, a", english:"tall"},
+      {spanish:"delgado, a", english:"thin"},
+      {spanish:"gordo, a", english:"fat"},
+      {spanish:"ser... feo, a", english:"to be... ugly"},
+      {spanish:"ser... guapo, a", english:"to be... good-looking"},
+      {spanish:"ser... bonito, a", english:"to be... pretty"},
+      {spanish:"tener/llevar barba", english:"to have/wear a beard"},
+      {spanish:"tener/llevar bigote", english:"to have/wear a mustache"},
+      {spanish:"llevar gafas", english:"to wear glasses"},
+      {spanish:"llevar un sombrero", english:"to wear a hat"},
+      {spanish:"llevar una gorra", english:"to wear a cap"},
+      {spanish:"llevar un pañuelo", english:"to wear a scarf"},
+      {spanish:"tonto, a", english:"silly"},
+      {spanish:"gracioso, a", english:"funny"},
+      {spanish:"antipático, a", english:"unfriendly"},
+      {spanish:"perezoso, a", english:"lazy"},
+      {spanish:"desagradable", english:"unpleasant"},
+      {spanish:"estudioso, a", english:"studious"},
+      {spanish:"inteligente, intelectual", english:"intelligent, intellectual"},
+      {spanish:"simpático, a", english:"nice"},
+      {spanish:"trabajador, a", english:"hard-working"},
+      {spanish:"agradable, amable", english:"pleasant, kind"},
+      {spanish:"guapo, a", english:"good-looking"},
+      {spanish:"puertorriqueño, a", english:"Puerto Rican"},
+      {spanish:"colombiano, a", english:"Colombian"},
+      {spanish:"italiano, a", english:"Italian"},
+      {spanish:"chino, china", english:"Chinese"},
+      {spanish:"mexicano, a", english:"Mexican"},
+      {spanish:"argentino, a", english:"Argentinian"}
+    ];
+
+    /* Practice state */
+    let mode = 'fill';
+    let score = 0;
+    let total = 0;
+    const scoreDisplay = document.getElementById('scoreDisplay');
+
+    /* Mode controls */
+    function setMode(m){
+      mode = m;
+      document.querySelectorAll('.mode').forEach(el=>el.classList.add('hidden'));
+      document.getElementById('mode-'+m).classList.remove('hidden');
+      if(m==='fill') buildFill();
+      if(m==='mc') buildMc();
+      if(m==='match') buildMatch();
+      updateScore();
+    }
+
+    function resetPractice(){
+      score = 0; total = 0; updateScore();
+      setMode(mode);
+    }
+
+    function updateScore(){ scoreDisplay.textContent = `Score: ${score} / ${total}` }
+
+    /* ---------- FILL-IN mode ---------- */
+    let currentFillSet = [];
+    function buildFill(){
+      const container = document.getElementById('fill-list');
+      container.innerHTML = '';
+      currentFillSet = shuffle([...practiceItems]).slice(0,6);
+      currentFillSet.forEach((it, idx)=>{
+        const row = document.createElement('div');
+        row.className = 'practice-row';
+        row.innerHTML = `<div style="min-width:220px"><strong>${it.spanish}</strong></div>
+          <input type="text" data-answer="${escapeHtml(it.english)}" id="fill-${idx}" placeholder="Type English...">
+          <div class="feedback" id="fb-fill-${idx}"></div>`;
+        container.appendChild(row);
+        row.querySelector('input').addEventListener('input', e=>{
+          const val = e.target.value.trim().toLowerCase();
+          const correct = e.target.getAttribute('data-answer').toLowerCase();
+          const fb = document.getElementById('fb-fill-'+idx);
+          if(val === '') { fb.textContent=''; return; }
+          if(val === correct){ fb.textContent='✅ Correct!'; fb.style.color='green' }
+          else { fb.textContent='❌ Try again'; fb.style.color='red' }
+        });
+      });
+    }
+
+    function checkAllFill(){
+      const inputs = document.querySelectorAll('#fill-list input');
+      inputs.forEach(inp=>{
+        const val = inp.value.trim().toLowerCase();
+        const correct = inp.getAttribute('data-answer').toLowerCase();
+        const fb = inp.nextElementSibling;
+        total += 1;
+        if(val === correct){ score += 1; fb.textContent='✅ Correct!'; fb.style.color='green' }
+        else { fb.textContent=`❌ Answer: ${correct}`; fb.style.color='red' }
+      });
+      updateScore();
+    }
+
+    function nextFillSet(){ buildFill(); }
+
+    /* ---------- MULTIPLE CHOICE mode ---------- */
+    let mcCurrent;
+    function buildMc(){
+      // prepare first question
+      nextMcQuestion();
+    }
+
+    function nextMcQuestion(){
+      const qbox = document.getElementById('mc-question');
+      const optbox = document.getElementById('mc-options');
+      optbox.innerHTML = '';
+      mcCurrent = pickRandom(practiceItems);
+      qbox.innerHTML = `<strong>What does "<em>${mcCurrent.spanish}</em>" mean?</strong>`;
+      const options = shuffle([mcCurrent.english, pickRandom(practiceItems).english, pickRandom(practiceItems).english, pickRandom(practiceItems).english]).slice(0,4);
+      // ensure mcCurrent.english is included
+      if(!options.includes(mcCurrent.english)){ options[ Math.floor(Math.random()*4) ] = mcCurrent.english; }
+      options.forEach(opt=>{
+        const div = document.createElement('div');
+        div.className = 'mc-option';
+        div.textContent = opt;
+        div.onclick = ()=>{
+          total += 1;
+          if(opt === mcCurrent.english){ score += 1; div.style.background='#d4f7d6'; div.textContent = opt + ' ✅'; }
+          else { div.style.background='#ffdede'; div.textContent = opt + ' ❌'; }
+          // disable options
+          Array.from(optbox.children).forEach(c=>c.style.pointerEvents='none');
+          updateScore();
+        };
+        optbox.appendChild(div);
+      });
+    }
+
+    /* ---------- MATCHING mode ---------- */
+    let matchPairs = [];
+    function buildMatch(){
+      const area = document.getElementById('matchArea');
+      area.innerHTML = '';
+      matchPairs = shuffle([...practiceItems]).slice(0,6);
+      const spanishCol = document.createElement('div');
+      spanishCol.style.display='flex'; spanishCol.style.flexDirection='column'; spanishCol.style.gap='8px';
+      const englishCol = document.createElement('div');
+      englishCol.style.display='flex'; englishCol.style.flexDirection='column'; englishCol.style.gap='8px';
+      // create targets and draggables
+      const englishShuffled = shuffle(matchPairs.map(p=>p.english));
+      matchPairs.forEach((p, i)=>{
+        const drag = document.createElement('div');
+        drag.className='match-draggable';
+        drag.textContent = p.spanish;
+        drag.setAttribute('data-spanish', p.spanish);
+        drag.setAttribute('draggable','true');
+        drag.ondragstart = ev => { ev.dataTransfer.setData('text/plain', p.spanish) };
+        spanishCol.appendChild(drag);
+      });
+      englishShuffled.forEach((eng)=>{
+        const target = document.createElement('div');
+        target.className='match-target';
+        target.textContent = eng;
+        target.setAttribute('data-english', eng);
+        target.ondragover = ev => ev.preventDefault();
+        target.ondrop = ev => {
+          ev.preventDefault();
+          const sp = ev.dataTransfer.getData('text/plain');
+          target.setAttribute('data-matched', sp);
+          target.style.border = '2px solid #9ad0b8';
+          target.textContent = eng + ' ← ' + sp;
+        };
+        englishCol.appendChild(target);
+      });
+      // make clickable pairing as alternative for devices
+      const wrapper = document.createElement('div');
+      wrapper.style.display='flex'; wrapper.style.gap='12px';
+      wrapper.appendChild(spanishCol); wrapper.appendChild(englishCol);
+      area.appendChild(wrapper);
+      // also add note for click pairing
+    }
+
+    function checkMatch(){
+      const targets = Array.from(document.querySelectorAll('.match-target'));
+      let localTotal = 0, localScore = 0;
+      targets.forEach(t=>{
+        const eng = t.getAttribute('data-english');
+        const sp = t.getAttribute('data-matched');
+        if(!eng) return;
+        localTotal += 1;
+        if(sp){
+          const pair = matchPairs.find(p=>p.spanish === sp && p.english === eng);
+          if(pair) localScore += 1;
+        }
+      });
+      total += localTotal; score += localScore;
+      updateScore();
+      alert(`You matched ${localScore} out of ${localTotal} correctly.`);
+    }
+
+    /* ---------- Utilities ---------- */
+    function pickRandom(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+    function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]] } return arr }
+    function escapeHtml(str){ return str.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,"&#39;").replace(/</g,'&lt;').replace(/>/g,'&gt;') }
+
+    // initialize default view
+    setMode('fill');
+  </script>
+</body>
+</html>
+```
