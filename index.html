@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Cómo eres tú? - Spanish Vocabulary Practice</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf6f8;
+      color: #333;
+      padding: 20px;
+    }
+    h2 {
+      color: #c94f7c;
+      margin-top: 40px;
+    }
+    .vocab-item {
+      margin: 8px 0;
+      cursor: pointer;
+      padding: 8px;
+      background-color: #f3d1f4;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .vocab-item:hover {
+      background-color: #e9b3e9;
+    }
+    .translation {
+      display: none;
+      margin-left: 15px;
+      font-style: italic;
+      color: #555;
+    }
+    .practice-section {
+      margin-top: 30px;
+    }
+    .practice-item {
+      margin-bottom: 15px;
+    }
+    input[type="text"] {
+      padding: 5px;
+      width: 200px;
+    }
+    .feedback {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📘 ¿Cómo eres tú? - Spanish Vocabulary Practice</h1>
+
+  <h2>🔍 Haz clic para revelar el significado</h2>
+
+  <!-- Physical Characteristics -->
+  <h3>Características físicas</h3>
+  <div class="vocab-item" onclick="toggleTranslation(this)">pelirrojo, a <span class="translation">red-haired</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">moreno, a <span class="translation">dark-haired</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">rubio, a <span class="translation">blond</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">castaño <span class="translation">brown-haired</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">blanco <span class="translation">white-haired</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">cano <span class="translation">gray-haired</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">bajo, a <span class="translation">short</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">alto, a <span class="translation">tall</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">delgado, a <span class="translation">thin</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">gordo, a <span class="translation">fat</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">feo, a <span class="translation">ugly</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">guapo, a <span class="translation">good-looking</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">bonito, a <span class="translation">pretty</span></div>
+
+  <!-- Eyes -->
+  <h3>Los ojos</h3>
+  <div class="vocab-item" onclick="toggleTranslation(this)">oscuro, a <span class="translation">dark</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">claro, a <span class="translation">light</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">negro, a <span class="translation">black</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">marrón <span class="translation">brown</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">azules <span class="translation">blue</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">verdes <span class="translation">green</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">pequeño, a <span class="translation">small</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">grandes <span class="translation">big</span></div>
+
+  <!-- Accessories -->
+  <h3>Accesorios y rasgos</h3>
+  <div class="vocab-item" onclick="toggleTranslation(this)">tener/llevar barba <span class="translation">to have/wear a beard</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">tener/llevar bigote <span class="translation">to have/wear a mustache</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">llevar gafas <span class="translation">to wear glasses</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">llevar un sombrero <span class="translation">to wear a hat</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">llevar una gorra <span class="translation">to wear a cap</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">llevar un pañuelo <span class="translation">to wear a scarf</span></div>
+
+  <!-- Personality -->
+  <h2>🧠 Carácter y personalidad</h2>
+  <div class="vocab-item" onclick="toggleTranslation(this)">tonto, a <span class="translation">silly</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">gracioso, a <span class="translation">funny</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">antipático, a <span class="translation">unfriendly</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">perezoso, a <span class="translation">lazy</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">desagradable <span class="translation">unpleasant</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">estudioso, a <span class="translation">studious</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">inteligente <span class="translation">intelligent</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">intelectual <span class="translation">intellectual</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">simpático, a <span class="translation">nice</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">trabajador, a <span class="translation">hard-working</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">agradable <span class="translation">pleasant</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">amable <span class="translation">kind</span></div>
+
+  <!-- Nationalities -->
+  <h2>🌎 Nacionalidades</h2>
+  <div class="vocab-item" onclick="toggleTranslation(this)">puertorriqueño, a <span class="translation">Puerto Rican</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">colombiano, a <span class="translation">Colombian</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">italiano, a <span class="translation">Italian</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">chino, china <span class="translation">Chinese</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">mexicano, a <span class="translation">Mexican</span></div>
+  <div class="vocab-item" onclick="toggleTranslation(this)">argentino, a <span class="translation">Argentinian</span></div>
+
+  <h2>✍️ Práctica: Escribe el significado en inglés</h2>
+  <div class="practice-section">
+    <div class="practice-item">
+      <label>¿Qué significa "simpático"? </label>
+      <input type="text" oninput="check
