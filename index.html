@@ -8,8 +8,11 @@
     :root{
       --bg:#fdf6f8; --card:#f3d1f4; --card-hover:#e9b3e9; --accent:#c94f7c; --muted:#555;
     }
-    body{font-family:Segoe UI, Roboto, Arial, sans-serif;background:var(--bg);color:#222;padding:18px;line-height:1.45}
-    h1,h2,h3,h4{color:var(--accent);margin:10px 0}
+    /* use Verdana as the primary UI font */
+    body{font-family:Verdana, Geneva, sans-serif;background:var(--bg);color:#222;padding:18px;line-height:1.45}
+    /* center main headings (h1, h2) and keep smaller headings left-aligned */
+    h1,h2{color:var(--accent);margin:10px 0;text-align:center}
+    h3,h4{color:var(--accent);margin:10px 0}
     .section{margin-bottom:18px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
     .vocab-item{background:var(--card);padding:8px;border-radius:6px;cursor:pointer;user-select:none}
@@ -427,4 +430,4 @@
   </script>
 </body>
 </html>
-```
+``` 
